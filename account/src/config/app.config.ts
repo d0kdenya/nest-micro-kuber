@@ -1,0 +1,22 @@
+import {Enviroment} from "./types/configurations.enums";
+import {IsEnum, IsString} from "class-validator";
+
+export class ApplicationConfig {
+    @IsEnum(Enviroment, { always: true })
+    NODE_ENV: Enviroment;
+
+    @IsString({ always: true })
+    SERVICE_NAME: string;
+
+    @IsString({ always: true })
+    HTTP_HOST: string;
+
+    @IsString({ always: true })
+    HTTP_PORT: string;
+
+    @IsString({ always: true })
+    HTTP_PREFIX: string;
+
+    @IsString({ always: true })
+    HTTP_VERSION: string;
+}
