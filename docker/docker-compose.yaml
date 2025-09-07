@@ -4,8 +4,13 @@ services:
   postgres:
     image: postgres:latest
     container_name: micro-db-postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-account-db}
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      TZ: ${TZ:-Europe/Moscow}
     ports:
-      - "${POSTGRES_PORT:-5432}:5432"
+      - "${POSTGRES_PORT:-5132}:5432"
     volumes:
       - ./volumes/postgres:/var/lib/postgresql/data
     restart: unless-stopped
